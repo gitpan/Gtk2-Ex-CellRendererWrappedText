@@ -1,0 +1,7 @@
+Revision history for perl module Gtk2::Ex::CellRendererWrappedText
+
+0.02
+  - <Ctrl+Enter> now adds new lines, <Enter> finishes the edit
+
+0.01
+  - first release
