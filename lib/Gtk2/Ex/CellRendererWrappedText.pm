@@ -1,6 +1,6 @@
 package Gtk2::Ex::CellRendererWrappedText::TextView;
 
-our $VERSION = 0.01;
+our $VERSION = 0.02.1;
 our $AUTHORITY = 'cpan:JHALLOCK';
 
 use Glib qw(TRUE FALSE);
@@ -36,7 +36,7 @@ sub START_EDITING {
 
 	my $e = Gtk2::Ex::CellRendererWrappedText::TextView->new;
 	$e->set( 'wrap-mode', $cell->get( 'wrap-mode' ) );
-	$e->get_buffer->set_text( $cell->get( 'text' ) );
+	$e->get_buffer->set_text( $cell->get( 'text' ) || '' );
 	$e->set_border_width( $cell->get( 'ypad' ) );
 	$e->set_size_request( $cell_area->width - $cell->get( 'ypad' ) * 4 , $cell_area->height );
 	$e->grab_focus;
@@ -47,7 +47,7 @@ sub START_EDITING {
 		# if user presses Ctrl + enter/return then send edited signal
 		if ( ( $event->keyval == $Gtk2::Gdk::Keysyms{Return}
 			||  $event->keyval == $Gtk2::Gdk::Keysyms{KP_Enter} )
-		    and ! $event->state & 'control-mask'
+		    and not $event->state & 'control-mask'
 			) {
 			$cell->signal_emit( edited => $path, $widget->get_text);
 			$widget->destroy;
