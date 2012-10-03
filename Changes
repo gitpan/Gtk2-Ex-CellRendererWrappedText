@@ -1,7 +1,8 @@
 Revision history for perl module Gtk2::Ex::CellRendererWrappedText
 
-0.02
-  - <Ctrl+Enter> now adds new lines, <Enter> finishes the edit
+0.2       2012-10-03 14:08:34
+- using Dist::Zilla
+- updated documentation
 
 0.01
-  - first release
+- first release
